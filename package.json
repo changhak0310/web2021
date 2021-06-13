@@ -1,0 +1,26 @@
+{
+  "name": "2021-web-sojon-2.CSS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bulid": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changhak0310/web2021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/changhak0310/web2021/issues"
+  },
+  "homepage": "https://github.com/changhak0310/web2021#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "webpack-cli": "^4.7.2"
+  }
+}
