@@ -36,7 +36,6 @@ import ReactDOM from 'react-dom';
 //     document.getElementById('root')
 //   );
 // }
-
 // setInterval(tick, 1000);
 
 // interface WelmcomeProps {
