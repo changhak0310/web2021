@@ -6,7 +6,10 @@ interface TodoAppProps {}
 interface TodoAppState {
   todoItems: string[];
   newTodo: string;
+  researchTodo: string;
+  researchItems: string[];
 }
+
 
 class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
   constructor(props: TodoAppProps) {
@@ -15,6 +18,8 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
     this.state = {
       todoItems: [],
       newTodo: "",
+      researchTodo: "",
+      researchItems: [],
     };
   }
 
@@ -22,8 +27,6 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
     this.setState({
       newTodo: e.target.value,
     });
-    console.log(this.setState);
-    
   }
 
   handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,20 +49,31 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
   //   })
   // }
 
-  research = (e: React.FormEvent<HTMLFormElement>) => {
+  researchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    const filterItems = (query: any) => {
+    const filterItems = (query: string) => {
       return this.state.todoItems.filter(item => item.indexOf(query) > -1);
     }
-    
-    for (let index = 0; index < this.state.todoItems.length; index++) {
-      <div>filterItems</div>
-    }
+    // for (let index = 0; index < this.state.todoItems.length; index++) {
+    //   <div>filterItems</div>
+    // }
     this.setState({
-      todoItems: [],
       newTodo: "",
+      researchTodo: "",
     })
+    console.log(filterItems(this.state.researchTodo));
+    this.setState({
+      researchItems: filterItems(this.state.researchTodo),
+    })
+
   }
+
+  researchTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      researchTodo: e.target.value,
+    });
+  } 
 
   render() {
     return (
@@ -76,14 +90,16 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
           ))
         }
         <br />
-        <form action="">
+        <form onSubmit={this.researchSubmit}>
           <label htmlFor="search">검색하기</label> <br />
-          <input type="text" id="search" value={this.state.newTodo} onChange={this.research}/> <br />
+          <input type="text" id="search" value={this.state.researchTodo} onChange={this.researchTodo}/> <br />
+          <button>검색하기</button>
         </form>
         {
-          this.research
+          this.state.researchItems.map((item, idx) => (
+            <TodoItem name={item} key={idx}/>
+          ))
         }
-        
       </div>
     )
   }
