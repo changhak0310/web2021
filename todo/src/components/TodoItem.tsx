@@ -2,6 +2,7 @@ import React from "react";
 
 interface TodoItemProps {
   name: string;
+  
 }
 
 function TodoItem(props: TodoItemProps) {

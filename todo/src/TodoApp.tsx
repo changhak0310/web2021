@@ -39,16 +39,6 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
     })
   }
 
-  // research = (e: ) => {
-  //   const filterItems = (query) => {
-  //     return todoItems.filter(snacks => snacks.indexOf(query) > -1);
-  //   }
-  //   this.setState({
-  //     todoItems: [],
-  //     newTodo: "",
-  //   })
-  // }
-
   researchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -75,7 +65,14 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
     });
   } 
 
+//deleteTodo = (e: React.FormEvent<HTML>)
+
   render() {
+    const styleTodo = {
+      color: "black",
+      backgroundColor: "blue",
+      fontFamily: "Arial"
+    }
     return (
       <div>
         <h3>TODO</h3>
@@ -93,7 +90,7 @@ class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
         <form onSubmit={this.researchSubmit}>
           <label htmlFor="search">검색하기</label> <br />
           <input type="text" id="search" value={this.state.researchTodo} onChange={this.researchTodo}/> <br />
-          <button>검색하기</button>
+          <button style={styleTodo}>검색하기</button>
         </form>
         {
           this.state.researchItems.map((item, idx) => (
